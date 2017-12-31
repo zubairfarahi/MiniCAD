@@ -1,0 +1,32 @@
+JFLAGS = -g
+JC = javac
+JVM= java 
+.SUFFIXES: .java .class
+.java.class:
+		$(JC) $(JFLAGS) $*.java
+
+CLASSES = \
+		Main.java\
+		cad/CAD.java\
+		cad/Canvas.java\
+		cad/ShapeVisitor.java\
+		draw/ShapeDrawVisitor.java\
+		shape/Circle.java\
+		shape/Diamond.java\
+		shape/Line.java\
+		shape/Polygon.java\
+		shape/Rectangle.java\
+		shape/Shape.java\
+		shape/ShapeFactory.java\
+		shape/Square.java\
+		shape/Triangle.java
+		 
+MAIN = Experiment 
+build: classes
+default: classes
+
+classes: $(CLASSES:.java=.class)
+run: $(MAIN).class
+	$(JVM) $(MAIN)
+clean:
+		$(RM) *.class
